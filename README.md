@@ -59,26 +59,26 @@ dealt a 3-card straight" for a definition of
 
 ## Tasks
 
-1. Write a program that
- - Implements the classes above
- - Creates and shuffles a deck and then
-   deals two or more 5-card hands from the deck.
- - Can generate many deals and collect statistics on them, in order
-   to answer the questions below.
+- Write a program that
+  - Implements the classes above
+  - Creates and shuffles a deck and then
+    deals two or more 5-card hands from the deck.
+  - Can generate many deals and collect statistics on them, in order
+    to answer the questions below.
 
-2. Answer the following questions by simulation (not by calculation); that is,
+- Answer the following questions by simulation (not by calculation); that is,
 by generating many random deals and collecting statistics from those deals.
 The simulations should use the classes/methods above (and any other methods
 or classes you need to write)
- - Starting point: 2 players, perfect shuffle, each dealt 5 cards
-   (alternating player1, player2, player1, etc)
- - What are the chances of being dealt a 3-card straight, i.e.  three
-   consecutive cards.  The three cards may be of different suits, and
-   it still counts as a 3-card straight if there are more than three
-   consecutive cards.  
-   This hand has a 3-card straight: 4 of clubs, 5 of spades, 6 of diamonds 7 of clubs, K of clubs  
-   This hand does not: 4 of clubs, 5 of clubs,  7 of clubs, 8 of spades, K of clubs
+  - Starting point: 2 players, perfect shuffle, each dealt 5 cards
+    (alternating player1, player2, player1, etc)
+  - What are the chances of being dealt a 3-card straight, i.e.  three
+    consecutive cards.  The three cards may be of different suits, and
+    it still counts as a 3-card straight if there are more than three
+    consecutive cards.  
+    This hand has a 3-card straight: 4 of clubs, 5 of spades, 6 of diamonds 7 of clubs, K of clubs  
+    This hand does not: 4 of clubs, 5 of clubs,  7 of clubs, 8 of spades, K of clubs
   
- - How do the chances vary with how well the deck is shuffled?
-   (i.e. with the "goodness" parameter in the Deck shuffle method).
- - How does this answer change if you vary the number of players?
+  - How do the chances vary with how well the deck is shuffled?
+    (i.e. with the "goodness" parameter in the Deck shuffle method).
+  - How does this answer change if you vary the number of players?
