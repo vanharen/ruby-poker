@@ -1,4 +1,7 @@
-
+# The Card class represents a single card
+# Methods:
+#   to_s, print - prints the type of card
+#
 class Card
   SUITS = %w(C D H S)           # Clubs, Diamonds, Hearts, Spades,
                                 #   in alphabetical order
