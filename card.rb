@@ -12,7 +12,7 @@ class Card
     raise ArgumentError,
           'Suit must be C, D, H, or S' if !SUITS.include?(@suit)
 
-    @value = case value.upcase
+    @value = case value.to_s.upcase
              when 'A'; 14       # Convert face cards to numeric values
              when 'K'; 13
              when 'Q'; 12
@@ -31,10 +31,10 @@ class Card
             when 12; 'Q'
             when 11; 'J'
             else
-              value
+              @value
             end
     "#{value}#{@suit}"
   end
-
   alias :print :to_s            # Problem statement wanted print() to exist
+
 end
