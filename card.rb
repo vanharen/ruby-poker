@@ -24,6 +24,14 @@ class Card
           'Value must be 2-14 (or J, Q, K, A)' if !VALUES.include?(@value)
   end
 
+  def suit
+    @suit
+  end
+
+  def value
+    @value
+  end
+
   def to_s
     value = case @value
             when 14; 'A'        # Convert numeric values to face cards when printing
