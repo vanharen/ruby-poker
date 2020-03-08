@@ -12,17 +12,16 @@
 #    If sameSuit if not true, any straight is counted
 #
 class Hand
+  attr_accessor :cards
+
   def initialize(cards = [])
     @cards = cards
   end
 
-  def cards
-    @cards
-  end
-
-  def addCard(card)             # adds a card to the hand
+  def <<(card)                  # adds a card to the hand
     @cards << card
   end
+  alias :addCard :<<
 
   def sortBySuit()              # sorts the cards by suit, and then by value
     @cards.sort_by! { |c| [c.suit, c.value] }
@@ -45,13 +44,13 @@ class Hand
       return false
     end
 
-    # get unique card values
+    # get unique card values, in sorted order
     card_values = @cards.map(&:value).sort.uniq
-    max_straight_len = straight_len = 1
+    straight_len = 1
 
-    # look for straights by searching f
-    for i in 0...card_values.size-1 do
-      if (card_values[i+1] - card_values[i]) == 1
+    # look for straights by searching for difference of 1 in values
+    for i in 1...card_values.size do
+      if (card_values[i] - card_values[i-1]) == 1
         straight_len += 1
         return true if straight_len == len
       else

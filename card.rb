@@ -7,6 +7,8 @@ class Card
                                 #   in alphabetical order
   VALUES = (2..14).to_a         # Card values from 2 thru Ace (Ace high)
   
+  attr_accessor :suit, :value
+
   def initialize(value, suit)
     @suit = suit.upcase
     raise ArgumentError,
@@ -22,14 +24,6 @@ class Card
              end
     raise ArgumentError,
           'Value must be 2-14 (or J, Q, K, A)' if !VALUES.include?(@value)
-  end
-
-  def suit
-    @suit
-  end
-
-  def value
-    @value
   end
 
   def to_s

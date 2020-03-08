@@ -6,17 +6,17 @@ class HandTest < MiniTest::Spec
 
   before do
     @hand = Hand.new
-    @hand.addCard(Card.new('A', 'h'))
+    @hand.addCard(Card.new('A', 'h')) # addCard is an alias for <<
     @hand.addCard(Card.new('q', 'c'))
     @hand.addCard(Card.new(2, 'h'))
     @hand.addCard(Card.new(3, 'h'))
     @hand.addCard(Card.new(13, 's'))
     @hand.addCard(Card.new(3, 's'))
-    @hand.addCard(Card.new(4, 'c'))
-    @hand.addCard(Card.new(6, 'd'))
-    @hand.addCard(Card.new(3, 'd'))
-    @hand.addCard(Card.new(10, 'c'))
-    @hand.addCard(Card.new(3, 'c'))
+    @hand << Card.new(4, 'c')         # << seems more idiomatic
+    @hand << Card.new(6, 'd')
+    @hand << Card.new(3, 'd')
+    @hand << Card.new(10, 'c')
+    @hand << Card.new(3, 'c')
   end
 
   describe "Hand" do
