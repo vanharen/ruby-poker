@@ -53,7 +53,7 @@ contains a straight of the given length.
 If sameSuit is true, counts only straights
 with cards in the same suit (flushes);
 If sameSuit if not true, any straight is counted
-(See below after "What are the changes of being
+(See below after "What are the chances of being
 dealt a 3-card straight" for a definition of
 "straight")
 
