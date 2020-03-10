@@ -31,6 +31,17 @@ class Hand
     @cards.sort_by! { |c| [c.value, c.suit] }
   end
 
+  def shuffle(goodness=0)       # 0=random, 1=unshuffled
+    goodness = goodness.to_f if goodness.class == Integer
+    if !( (goodness.class == Float) &&
+          ((0..1).include? goodness) )
+      raise ArgumentError,
+            'Goodness must a float between 0 and 1, inclusive'
+    end
+
+    @cards.shuffle! if goodness != 1
+  end
+
   def hasStraight(len, sameSuit=false)
     # short-circuit on degenerate cases
     return false if len > size
@@ -61,6 +72,14 @@ class Hand
     false
   end
 
+  def first
+    @cards.first
+  end
+
+  def last
+    @cards.last
+  end
+
   def size
     @cards.size
   end
@@ -69,5 +88,9 @@ class Hand
   def to_s
     @cards.join(", ")
   end
-  alias :print :to_s            # Problem statement wanted print() to exist
+
+  def print
+    puts self
+  end
+
 end
