@@ -37,6 +37,9 @@ class Card
             end
     "#{value}#{@suit}"
   end
-  alias :print :to_s            # Problem statement wanted print() to exist
+
+  def print
+    puts self
+  end
 
 end
