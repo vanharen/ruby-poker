@@ -31,6 +31,14 @@ class Hand
     @cards.sort_by! { |c| [c.value, c.suit] }
   end
 
+  # In a perfect human shuffle, the deck is split in half, and then
+  # re-combined, alternating one card from each half.
+  #
+  # For this implementation, we'll ignore cutting the deck first.  For
+  # the unshuffled deck (goodness=1) we won't change the position of
+  # any cards.  As goodness decreases to zero, we'll allow cards to
+  # move farther from their initial position.
+  #
   def shuffle(goodness=0)       # 0=random, 1=unshuffled
     goodness = goodness.to_f if goodness.class == Integer
     if !( (goodness.class == Float) &&
@@ -39,7 +47,27 @@ class Hand
             'Goodness must a float between 0 and 1, inclusive'
     end
 
-    @cards.shuffle! if goodness != 1
+    # First we create an array of offsets based on the size of the
+    # deck and the goodness value.  e.g. if deck_size=52 and
+    # goodness=1, the offsets array will be 52 zeroes, meaning no card
+    # moves at all.  If deck_size=52 and goodness=1, then the array
+    # will contain [0,1,2,3,4 ... 52] meaning each card may randomly
+    # move any number of spaces from 0 to 52
+    deck_size = @cards.size
+    max_offset = (1.0 - goodness) * deck_size
+    offsets = (0..max_offset).to_a
+
+    # Now we "shuffle", by allowing each card to move by a random
+    # offset picked out of the "offsets" array created above and
+    # adding that offest to the original position, modulo deck_size,
+    # then sort the result.  Note that the sort order of two cards
+    # with the same index is not guaranteed.
+    shuffled_cards = @cards.each_with_index.map { |c, i|
+      new_idx = (i + offsets.sample) % deck_size
+      [new_idx, c]
+    }.sort_by {|c| c[0]}.map{|c| c[1]}
+
+    @cards = shuffled_cards
   end
 
   def hasStraight(len, sameSuit=false)
