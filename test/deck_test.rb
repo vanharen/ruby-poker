@@ -31,7 +31,11 @@ describe "Deck" do
     # be very rare (1/52 * 1/52 = 0.04% chance)
     @deck.shuffle(0)
     value([first_card, last_card]).wont_equal [@deck.first, @deck.last]
-  end
+
+    @deck.sortBySuit
+    @deck.shuffle(0.5)
+    value([first_card, last_card]).wont_equal [@deck.first, @deck.last]
+end
 
   it "can deal cards" do
     card = @deck.dealOne
